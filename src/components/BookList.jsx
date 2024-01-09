@@ -35,12 +35,16 @@ class BookList extends Component {
 								.filter((b) => b.title.toLowerCase().includes(this.state.searchQuery))
 								.map((b) => (
 									<Col xs={12} md={4} key={b.asin}>
-										<SingleBook book={b} setAsinState={this.setAsinState} />
+										<SingleBook book={b} setAsinState={this.setAsinState} asin={this.state.asin} />
 									</Col>
 								))}
 						</Row>
 					</Col>
-					<Col xs={4}>{this.state.asin == null ? "" : <CommentArea asin={this.state.asin} />}</Col>
+					<Col xs={4}>
+						<div className="pt-5 mt-5 sticky-top">
+							<CommentArea asin={this.state.asin} />
+						</div>
+					</Col>
 				</Row>
 			</>
 		);

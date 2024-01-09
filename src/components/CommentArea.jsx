@@ -47,10 +47,16 @@ class CommentArea extends Component {
 	render() {
 		return (
 			<div className="text-center">
-				{this.state.isLoading && <Loading />}
-				{this.state.isError && <Error />}
-				<AddComment asin={this.props.asin} />
-				<CommentList commentsToShow={this.state.comments} />
+				{this.props.asin == null ? (
+					<h3>Clicca per vedere i commenti</h3>
+				) : (
+					<>
+						{this.state.isLoading && <Loading />}
+						{this.state.isError && <Error />}
+						<AddComment asin={this.props.asin} />
+						<CommentList commentsToShow={this.state.comments} />
+					</>
+				)}
 			</div>
 		);
 	}
